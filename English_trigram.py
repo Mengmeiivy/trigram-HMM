@@ -75,7 +75,6 @@ def get_emission (word, tag, twotag, notfirst):
 		emission = 0.5*(unknownprob.get(tag, 0.0) + unknownprob.get(twotag, 0.0))
 	return emission
 
-
 #the viterbi algorithm
 def viterbi (sent, wordprob, tagprob, taglist):
 
@@ -141,8 +140,6 @@ def viterbi (sent, wordprob, tagprob, taglist):
 							maxindex = w
 					viterbi[q, i, p] = maxscore
 					backpointer[q, i, p] = maxindex
-
-
 	maxscore = 0.0
 	maxindex = 0
 	tag = 'END'
@@ -166,8 +163,6 @@ def viterbi (sent, wordprob, tagprob, taglist):
 			prior = get_prior(prevtwotag, prevtag, tag)
 			currentmax = viterbi[p, 1, 0]*prior
 			viterbi[length1-1, length2-1, p] = currentmax
-
-
 
 	if (length2 > 3):
 		maxscore = 0.0
@@ -205,7 +200,6 @@ def viterbi (sent, wordprob, tagprob, taglist):
 		output.write(sent[i] + '\t' + answertag[i] + '\n')
 	output.write('\n')
 
-
 """-----the main program-----"""
 
 wordprob = {}
@@ -217,7 +211,6 @@ total_tag = 0
 
 #open the training file
 f = open('WSJ_02-21.pos', 'r')
-#f = open('small.txt', 'r')
 prevtag = 'START'
 prevtwotag = 'START'
 for line in f:
@@ -313,7 +306,6 @@ for line in f1:
 		prevtag = 'START'
 		prevtwotag = 'START'
 
-
 #process the likelihood dictionaries 
 for word in wordprob:
 	if (wordprob[word]['SUM'] == 1):
@@ -335,9 +327,7 @@ for tag in unknownprob:
 
 #open the test file and produce the output 
 f2 = open('WSJ_23.words', 'r')
-#f2 = open('medium.txt', 'r')
 output = open('english_output.txt', 'w')
-#output = open('medium_output.txt', 'w')
 sent = []
 for line in f2:
 	if (line != '\n'):
@@ -346,16 +336,6 @@ for line in f2:
 		print (sent)
 		viterbi (sent, wordprob, tagprob, taglist)
 		sent = []
-
-
-
-
-
-
-
-
-
-
 
 
 
