@@ -365,8 +365,6 @@ for tag in unknownprob:
 	unknownprob[tag] = unknownprob[tag] / tagprob[tag]['SUM']
 
 #open the test file and produce the output 
-#f2 = open('small_c.txt', 'r')
-#f2 = open('big_c.txt', 'r')
 f2 = open('chinese_test_words.txt', 'r')
 output = open('chinese_output.txt', 'w')
 sent = []
@@ -377,17 +375,6 @@ for line in f2:
 		print (sent)
 		viterbi (sent, wordprob, tagprob, taglist)
 		sent = []
-
-
-
-
-
-
-
-
-
-
-
 
 
 
