@@ -249,7 +249,6 @@ total_tag = 0
 
 #open the training file
 f = open('chinese_training.txt', 'r')
-#f = open('small.txt', 'r')
 prevtag = 'START'
 prevtwotag = 'START'
 for line in f:
